@@ -12,8 +12,8 @@ post {{url}}/api/issues
 Content-Type: application/json
 
 {
-  "title": "issue title",
-  "description": "issue description"
+  "title": "",
+  "description": ""
 }
 ###
 get {{url}}/api/products
