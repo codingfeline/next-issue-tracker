@@ -1,0 +1,44 @@
+get {{url}}/api/users/
+###
+put {{url}}/api/users/658b664cb5cfdc8980773f2c
+Content-Type: application/json
+
+{
+  "name": "test 2",
+  "email": "new@gmail.com"
+}
+###
+post {{url}}/api/issues
+Content-Type: application/json
+
+{
+  "title": "issue title",
+  "description": "issue description"
+}
+###
+get {{url}}/api/products
+###
+post {{url}}/api/products
+Content-Type: application/json
+
+{
+  "name": "tea",
+  "price": 2
+}
+###
+delete {{url}}/api/users/658d2f43b559d85a7303bc03
+###
+post {{url}}/api/products
+Content-Type: application/json
+
+{
+  "name": "NewSolution2"
+}
+###
+post {{url}}/api/register
+Content-Type: application/json
+
+{
+  "email": "naz@gmail.com",
+  "password": ""
+}
