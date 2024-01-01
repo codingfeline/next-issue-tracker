@@ -3,6 +3,7 @@ import { prisma } from '@/prisma/client'
 import { notFound } from 'next/navigation'
 import { Card, Flex, Heading, Text } from '@radix-ui/themes'
 import IssueStatusBadge from '@/app/components/IssueStatusBadge'
+import ReactMarkDown from 'react-markdown'
 
 interface Props {
   params: { id: string }
@@ -24,8 +25,10 @@ const IssueDetail = async ({ params }: Props) => {
         <IssueStatusBadge status={issue.status} />
         <Text>{issue.createdAt.toDateString()}</Text>
       </Flex>
-      <Card>
-        <p>{issue.description}</p>
+      <Card className="prose" mt="4">
+        {/*  the above is to overcome tailwind h1 issue, after adding 
+         require('@tailwindcss/typography') */}
+        <ReactMarkDown>{issue.description}</ReactMarkDown>
       </Card>
     </>
   )
