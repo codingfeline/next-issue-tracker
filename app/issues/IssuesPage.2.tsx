@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Button,
-  Table,
   TableBody,
   TableCell,
   TableColumnHeaderCell,
@@ -13,15 +12,18 @@ import Link from 'next/link'
 import { prisma } from '@/prisma/client'
 import IssueStatusBadge from '../components/IssueStatusBadge'
 import delay from 'delay'
-import IssueActions from '../api/issues/IssueActions'
 
-const IssuesPage = async () => {
+export const IssuesPage = async () => {
   const issues = await prisma.issue.findMany()
   await delay(2000)
 
   return (
     <>
-      <IssueActions />
+      <div className="mb-5">
+        <Button>
+          <Link href="/issues/new">New Issue</Link>
+        </Button>
+      </div>
 
       <TableRoot variant="surface">
         <TableHeader>
@@ -58,5 +60,3 @@ const IssuesPage = async () => {
     </>
   )
 }
-
-export default IssuesPage
