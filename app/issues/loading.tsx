@@ -1,14 +1,6 @@
-import {
-  TableBody,
-  TableCell,
-  TableColumnHeaderCell,
-  TableHeader,
-  TableRoot,
-  TableRow,
-} from '@radix-ui/themes'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import { Table } from '@radix-ui/themes'
 import IssueActions from '../api/issues/IssueActions'
+import { Skeleton } from '@/app/components'
 
 const LoadingIssues = () => {
   const issues = [1, 2, 3, 4, 5]
@@ -16,37 +8,37 @@ const LoadingIssues = () => {
   return (
     <>
       <IssueActions />
-      <TableRoot variant="surface">
-        <TableHeader>
-          <TableRow>
-            <TableColumnHeaderCell>Issue</TableColumnHeaderCell>
-            <TableColumnHeaderCell className="hidden md:table-cell">
+      <Table.Root variant="surface">
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="hidden md:table-cell">
               Status
-            </TableColumnHeaderCell>
-            <TableColumnHeaderCell className="hidden md:table-cell">
+            </Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="hidden md:table-cell">
               Created
-            </TableColumnHeaderCell>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
+            </Table.ColumnHeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
           {issues.map(issue => (
-            <TableRow key={issue}>
-              <TableCell>
+            <Table.Row key={issue}>
+              <Table.Cell>
                 <Skeleton />
                 <div className="block md:hidden">
                   <Skeleton />
                 </div>
-              </TableCell>
-              <TableCell className="hidden md:table-cell">
+              </Table.Cell>
+              <Table.Cell className="hidden md:table-cell">
                 <Skeleton />
-              </TableCell>
-              <TableCell className="hidden md:table-cell">
+              </Table.Cell>
+              <Table.Cell className="hidden md:table-cell">
                 <Skeleton />
-              </TableCell>
-            </TableRow>
+              </Table.Cell>
+            </Table.Row>
           ))}
-        </TableBody>
-      </TableRoot>
+        </Table.Body>
+      </Table.Root>
     </>
   )
 }
