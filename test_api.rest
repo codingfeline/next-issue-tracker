@@ -8,6 +8,14 @@ Content-Type: application/json
   "email": "new@gmail.com"
 }
 ###
+patch {{url}}/api/issues/6591f406cdda7fed7caf07dc
+Content-Type: application/json
+
+{
+  "title": "test 2",
+  "description": "new@gmail.com"
+}
+###
 post {{url}}/api/issues
 Content-Type: application/json
 
