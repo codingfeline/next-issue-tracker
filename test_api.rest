@@ -34,7 +34,7 @@ Content-Type: application/json
   "price": 2
 }
 ###
-delete {{url}}/api/users/658d2f43b559d85a7303bc03
+delete {{url}}/api/issues/6591f406cdda7fed7caf07dc
 ###
 post {{url}}/api/products
 Content-Type: application/json
