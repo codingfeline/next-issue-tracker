@@ -5,6 +5,7 @@ import { AiFillBug } from 'react-icons/ai'
 import { useSession } from 'next-auth/react'
 import { Avatar, Box, Container, DropdownMenu, Flex, Text } from '@radix-ui/themes'
 import { usePathname } from 'next/navigation'
+import { Skeleton } from '@/app/components'
 
 export default function NavBar() {
   return (
@@ -51,7 +52,7 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const { status, data: session } = useSession() // get user's name email image
 
-  if (status === 'loading') return null
+  if (status === 'loading') return <Skeleton width="3rem" />
 
   if (status === 'unauthenticated')
     return (
