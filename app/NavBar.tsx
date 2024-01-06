@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AiFillBug } from 'react-icons/ai'
 import { useSession } from 'next-auth/react'
-import { Box } from '@radix-ui/themes'
+import { Box, Container, Flex } from '@radix-ui/themes'
 
 export default function NavBar() {
   const currentPath = usePathname()
@@ -15,31 +15,38 @@ export default function NavBar() {
     { label: 'Issues', href: '/issues/list' },
   ]
   return (
-    <nav className="flex space-x-6 border-b mb-5 px-5 h-14 items-center">
-      <Link href="/">
-        <AiFillBug />
-      </Link>
-      <ul className="flex space-x-6">
-        {links.map(link => (
-          <li key={link.href}>
-            <Link
-              className={` ${
-                link.href === currentPath ? 'text-zinc-900' : 'text-zinc-500'
-              } hover:text-zinc-800 transition-colors`}
-              href={link.href}
-            >
-              {link.label}
+    <nav className="border-b mb-5 px-5 py-3">
+      <Container>
+        <Flex justify="between">
+          <Flex align="center" gap="3">
+            <Link href="/">
+              <AiFillBug />
             </Link>
-          </li>
-        ))}
-      </ul>
-      <Box>
-        {status === 'authenticated' ? (
-          <Link href="/api/auth/signout">Logout</Link>
-        ) : (
-          <Link href="/api/auth/signin">SignIn</Link>
-        )}
-      </Box>
+            <ul className="flex space-x-6">
+              {links.map(link => (
+                <li key={link.href}>
+                  <Link
+                    className={` ${
+                      link.href === currentPath ? 'text-zinc-900' : 'text-zinc-500'
+                    } hover:text-zinc-800 transition-colors`}
+                    href={link.href}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Flex>
+
+          <Box>
+            {status === 'authenticated' ? (
+              <Link href="/api/auth/signout">Logout</Link>
+            ) : (
+              <Link href="/api/auth/signin">SignIn</Link>
+            )}
+          </Box>
+        </Flex>
+      </Container>
     </nav>
   )
 }
