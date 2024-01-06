@@ -48,6 +48,9 @@ export default function NavBar() {
                     size="2"
                     radius="full"
                     className="cursor-pointer"
+                    referrerPolicy="no-referrer"
+                    // * above is to combar Avatar not displaying.
+                    // * it works during dev without the above but just in case
                   />
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Content>
