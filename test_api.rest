@@ -8,7 +8,7 @@ Content-Type: application/json
   "email": "new@gmail.com"
 }
 ###
-patch {{url}}/api/issues/6591f406cdda7fed7caf07dc
+patch {{url}}/api/issues/6591a4d8141c6a6d869cb267
 Content-Type: application/json
 
 {
@@ -34,7 +34,7 @@ Content-Type: application/json
   "price": 2
 }
 ###
-delete {{url}}/api/issues/6591f406cdda7fed7caf07dc
+delete {{url}}/api/issues/6591a4d8141c6a6d869cb267
 ###
 post {{url}}/api/products
 Content-Type: application/json
