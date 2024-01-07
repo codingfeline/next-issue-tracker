@@ -12,8 +12,7 @@ patch {{url}}/api/issues/6591a4d8141c6a6d869cb267
 Content-Type: application/json
 
 {
-  "title": "test 2",
-  "description": "new@gmail.com"
+  "assignedToUserId": null
 }
 ###
 post {{url}}/api/issues
