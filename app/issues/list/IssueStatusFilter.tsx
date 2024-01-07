@@ -16,7 +16,12 @@ const IssueStatusFilter = () => {
   const router = useRouter()
 
   return (
-    <Select.Root>
+    <Select.Root
+      onValueChange={status => {
+        const query = status === 'ALL' ? '' : `?status=${status}`
+        router.push('/issues/list' + query)
+      }}
+    >
       <Select.Trigger placeholder="Filter by status..." />
       <Select.Content>
         {statuses.map(status => (
@@ -30,3 +35,6 @@ const IssueStatusFilter = () => {
 }
 
 export default IssueStatusFilter
+
+// * solution to Select.Item must have a value prop
+// https://forum.codewithmosh.com/t/a-select-item-must-have-a-value-prop-that-is-not-an-empty-string-this-is-because-the-select-value-can-be-set-to-an-empty-string-to-clear-the-selection-and-show-the-placeholder/23078/3
