@@ -5,4 +5,4 @@ export const config = {
     '/issues/new',
     '/issues/edit/:id+'
   ]
-}
+} 
