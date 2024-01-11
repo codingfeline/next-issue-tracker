@@ -8,19 +8,22 @@ import { getServerSession } from 'next-auth'
 import authOptions from '@/app/api/auth/[...nextauth]/authOptions'
 import AssigneeSelect from './AssigneeSelect'
 import { Metadata } from 'next'
+import { cache } from 'react'
 
 interface Props {
   params: { id: string }
 }
+
+const fetchIssue = cache((issueId: string) =>
+  prisma.issue.findUnique({ where: { id: issueId } })
+)
 
 const IssueDetail = async ({ params }: Props) => {
   const session = await getServerSession(authOptions)
 
   if (params.id.length !== 24) notFound()
 
-  const issue = await prisma.issue.findUnique({
-    where: { id: params.id },
-  })
+  const issue = await fetchIssue(params.id)
 
   if (!issue) notFound()
 
@@ -45,7 +48,7 @@ const IssueDetail = async ({ params }: Props) => {
 export default IssueDetail
 
 export async function generateMetadata({ params }: Props) {
-  const issue = await prisma.issue.findUnique({ where: { id: params.id } })
+  const issue = await fetchIssue(params.id)
 
   return {
     title: issue?.title,
